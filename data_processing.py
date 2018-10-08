@@ -264,6 +264,35 @@ def intan_video_timing(ppath, rec, tscale=0):
     so.savemat(os.path.join(ppath, rec, 'video_timing.mat'), {'onset':onset, 'tick_onset':tick_onset})
 
 
+def check_drop(difflist):
+    newlist = [0]
+    for i in range(len(difflist)):
+        cv = difflist[i]
+        # End tests to avoid index errors
+        try:
+            av = difflist[i] + difflist[i+1]
+        except:
+            print('End of tests')
+            av = difflist[i] + 0.199
+        
+        if i == 0:
+            pav = difflist[i] + 0.199
+        else:
+            pav = difflist[i] + difflist[i-1]
+
+        # Actual test to find dropped frames
+        if pav > 0.4 and av > 0.4:
+            newlist.append(1)
+            if pav > 0.6 and av > 0.6:
+                newlist.append(1)
+                if pav > 0.8 and av > 0.8:
+                    newlist.append(1)
+        else:
+            newlist.append(0)
+
+    return newlist
+
+
 
 #######################################################################################  
 ### START OF SCRIPT ###################################################################
