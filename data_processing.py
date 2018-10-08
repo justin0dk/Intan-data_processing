@@ -54,7 +54,7 @@ import pdb
 # Channel allocation
 # introduce colleague field and port number
 
-
+# test1
 def get_infoparam(ppath, name):
     """
     name is a parameter/info text file, saving parameter values using the following
