@@ -301,7 +301,7 @@ def check_drop(difflist):
 PPATH = '/Users/tortugar/Documents/Penn/Data/RawData'
 ndig = 16
 # To convert to electrode voltage in microvolts, multiply by 0.195
-FACTOR = 0.195
+FACTOR = 0.197
 
 # chose directory with intan raw files to be processed:
 pdb.set_trace()
